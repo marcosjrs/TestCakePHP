@@ -15,7 +15,7 @@ class CreateBookmarks extends AbstractMigration
         $table = $this->table('bookmarks');
         $table->addColumn('title', 'string', [
             'default' => null,
-            'limit' => 255,
+            'limit' => 155,
             'null' => false,
         ]);
         $table->addColumn('description', 'text', [
