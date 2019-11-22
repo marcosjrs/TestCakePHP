@@ -35,5 +35,13 @@ class CreateBookmarks extends AbstractMigration
             'null' => false,
         ]);
         $table->create();
+
+        //Creamos asociación de bookmarks con usuario.
+        //Añadiendo una clave foránea user_id en bookmarks.
+        //FK con borrado en cascada. Borra usuario, borra bookmarks asociados.
+        $refTable = $this->table('bookmarks');
+        $refTable->addColumn('user_id','integer',array('signed' => 'disable'))
+            ->addForeignKey('user_id','users','id', array('delete'=>'CASCADE', 'update'=>'NO_ACTION'))
+            ->update();
     }
 }
