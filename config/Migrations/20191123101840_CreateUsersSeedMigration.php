@@ -3,10 +3,10 @@
 use Cake\Auth\DefaultPasswordHasher;
 use Migrations\AbstractMigration;
 /**
- * Clase autogenerada mediante: cake migrations create CreateSeedMigration.
+ * Clase autogenerada mediante: cake migrations create CreateUsersSeedMigration.
  * Luego vaciada e implementado metodo up, para poblar de datos de prueba la tabla user.
  */
-class CreateSeedMigration extends AbstractMigration
+class CreateUsersSeedMigration extends AbstractMigration
 {
     public function up()
     {
