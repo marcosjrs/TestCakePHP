@@ -14,4 +14,10 @@ class UsersController extends AppController
         echo "Listado de usuarios";
         exit();
     }
+
+    public function view()
+    {
+        echo "Detalle de usuario";
+        exit();
+    }
 }
