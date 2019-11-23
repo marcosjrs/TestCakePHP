@@ -11,8 +11,8 @@ class UsersController extends AppController
 {
     public function index()
     {
-        echo "Listado de usuarios";
-        exit();
+        $users = $this->Users->find("all");
+        $this->set("users",$users);
     }
 
     public function view($parametro=null)
