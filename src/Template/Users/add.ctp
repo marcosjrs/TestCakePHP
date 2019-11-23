@@ -21,7 +21,7 @@
             echo $this->Form->control('last_name');
             echo $this->Form->control('email');
             echo $this->Form->control('password');
-            echo $this->Form->control('role');
+            echo $this->Form->control('role',['options'=>['admin'=>'Administrador','user'=>'Usuario']]);
             echo $this->Form->control('active');
         ?>
     </fieldset>
