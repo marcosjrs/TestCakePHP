@@ -11,7 +11,7 @@ class UsersController extends AppController
 {
     public function index()
     {
-        $users = $this->Users->find("all");
+        $users = $this->paginate( $this->Users);
         $this->set("users",$users);
     }
 
