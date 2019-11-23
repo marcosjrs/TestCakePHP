@@ -87,11 +87,13 @@ Router::scope('/', function (RouteBuilder $routes) {
      *
      * You can remove these routes once you've connected the
      * routes you want in your application.
-     */
-
-    $routes->connect('/users/index', ['controller' => 'Users', 'action' => 'index']);
+     */    
 
     $routes->fallbacks(DashedRoute::class);
+});
+
+Router::scope("/users", function($routes){
+    $routes->connect('/users/index', ['controller' => 'Users', 'action' => 'index']);
 });
 
 /**
