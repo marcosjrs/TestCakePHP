@@ -93,8 +93,8 @@ Router::scope('/', function (RouteBuilder $routes) {
 });
 
 Router::scope("/users", function($routes){
-    $routes->connect('/users/index', ['controller' => 'Users', 'action' => 'index']);
-    $routes->connect('/users/view/*', ['controller' => 'Users', 'action' => 'index']);
+    $routes->connect('/index', ['controller' => 'Users', 'action' => 'index']);
+    $routes->connect('/view/*', ['controller' => 'Users', 'action' => 'view']);
 });
 
 /**
