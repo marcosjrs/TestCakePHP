@@ -9,4 +9,9 @@ use App\Controller\AppController;
  */
 class UsersController extends AppController
 {
+    public function index()
+    {
+        echo "Listado de usuarios";
+        exit();
+    }
 }
