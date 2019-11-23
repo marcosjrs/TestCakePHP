@@ -15,9 +15,9 @@ class UsersController extends AppController
         exit();
     }
 
-    public function view()
+    public function view($parametro=null)
     {
-        echo "Detalle de usuario";
+        echo "Detalle de usuario ".$parametro;
         exit();
     }
 }
