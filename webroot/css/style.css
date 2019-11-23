@@ -526,8 +526,3 @@ table td {
 li.no-decoration{
     list-style-type:none;
 }
-
-.form-basico{
-    max-width: 300px;
-    margin: 50px auto;
-} 
