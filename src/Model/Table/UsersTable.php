@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -105,5 +104,22 @@ class UsersTable extends Table
         $rules->add($rules->isUnique(['email']));
 
         return $rules;
+    }
+
+    /**
+     * Devuelve ciertos campos de los usuarios que tengan el campo active = true.
+     * Antes se instanció  'finder'=> 'auth' en la configuración de autentificación Form 
+     * en AppController, con esto se filtran a la sesión, solo los campos que le pongamos.
+     * 
+     * Por convención es find+Algo(Query $query, array $arraySegundoParametro).
+     * Y el uso sería algo como $users->find('algo', $arraySegundoParametroDelFind), 
+     * pero este es un caso particular.
+     */
+    public function findAuth(\Cake\ORM\Query $query, array $options)
+    {
+        
+        return $query
+            ->select(['id','first_name','last_name','email','password','role'])
+            ->where(['Users.active' =>true]);
     }
 }

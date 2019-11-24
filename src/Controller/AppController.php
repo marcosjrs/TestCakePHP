@@ -60,7 +60,11 @@ class AppController extends Controller
                         'fields' => [
                             'username' => 'email',
                             'password' => 'password'
-                        ]
+                        ],
+                        /** filtramos los datos de auth, para que tenga solo 
+                         * unos campos determinados en la session, no todos. 
+                         * Ver metodo findAuth de UsersTable, creado por nosotros a posteriori */
+                        'finder'=> 'auth'
                     ]
                 ],
                 'loginAction' => [
