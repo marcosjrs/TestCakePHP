@@ -37,15 +37,15 @@
     </div>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('primero')) ?>
+            <?= $this->Paginator->first('<< ' . __('Primero')) ?>
 
-            <?= $this->Paginator->prev('< ' . __('anterior')) ?>
+            <?= $this->Paginator->prev('< ' . __('Anterior')) ?>
             <?= $this->Paginator->numbers(['before'=>'','after'=>'']) ?>
-            <?= $this->Paginator->next(__('siguiente') . ' >') ?>
+            <?= $this->Paginator->next(__('Siguiente') . ' >') ?>
 
-            <?= $this->Paginator->last(__('último') . ' >>') ?>
+            <?= $this->Paginator->last(__('Último') . ' >>') ?>
         </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+        <p><?= $this->Paginator->counter(['format' => __('Pagina {{page}} de {{pages}}, enseñando {{current}} filas de {{count}} en total')]) ?></p>
     </div>
 </div>
 </div>
