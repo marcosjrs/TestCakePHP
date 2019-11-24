@@ -92,6 +92,9 @@ class UsersController extends AppController
                 $this->Flash->error('Datos inválidos, inténtelo de nuevo',['key' => 'auth']);
             }
         }
+        if($this->Auth->user()){
+            $this->redirect(['controller'=>'users','action'=>'home']);
+        }
     }
 
     
