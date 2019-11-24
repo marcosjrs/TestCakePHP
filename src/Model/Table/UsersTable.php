@@ -106,7 +106,8 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email']));
+        //Aquí ponemos los campos que deben ser únicos
+        $rules->add($rules->isUnique(['email'],'Ya existe un usuario con ese email'));
 
         return $rules;
     }
