@@ -25,7 +25,7 @@ class UsersController extends AppController
         if(isset($user['role']) and $user['role'] == 'user'){
             //Si es de tipo user, se mira si la accion pedida está entre las que permitimos
             //para ese tipo de usuario, que solo son: home y logout.
-            if(in_array($this->request->action, ['home','logout','view'])){
+            if(in_array($this->request->action, ['home','view','logout'])){
                 return true;
             }
             
