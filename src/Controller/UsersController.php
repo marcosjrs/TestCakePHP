@@ -95,6 +95,28 @@ class UsersController extends AppController
         return $this->redirect(['action' => 'index']);
     }
     
+    /**
+     * Accion usada tanto para mostrar el formulario de edición, 
+     * como para guardar formulario modificado
+     */
+    public function edit($id = null)
+    {
+        $user = $this->Users->get($id);
+        if ($this->request->is(['patch', 'post', 'put']))
+        {
+            $user = $this->Users->patchEntity($user, $this->request->data);
+            if ($this->Users->save($user))
+            {
+                $this->Flash->success('El usuario ha sido modificado');
+                return $this->redirect(['action' => 'index']);
+            }
+            else
+            {
+                $this->Flash->error('El usuario no pudo ser modificado');
+            }
+        }
+        $this->set(compact('user'));
+    }
 
     /**
      * Accion usada tanto para mostrar el login, como para comprobar la autenticacion
