@@ -128,4 +128,17 @@ class UsersTable extends Table
             ->select(['id','first_name','last_name','email','password','role'])
             ->where(['Users.active' =>true]);
     }
+
+    /**
+     * Se ejecuta antes de ejecutar cualquier Delete sobre la tabla
+     */
+    public function beforeDelete($event, $entity, $options)
+    {
+        //no permitimos borrar ningún admin
+        if ($entity->role == 'admin')
+        {
+            return false;
+        }
+        return true;
+    }
 }
