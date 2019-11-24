@@ -50,6 +50,7 @@ class AppController extends Controller
             Accion que responderá al intento de login: Users->login
             Acción a redirigir cuando haya logado: Users->home
             Acción a redirigir cuando haya cerrado su sesión: Users->login
+            Redirección realizada cuando se intenta acceder a un lugar no autorizado
             */
             $this->loadComponent('RequestHandler');
             $this->loadComponent('Flash');
@@ -79,7 +80,8 @@ class AppController extends Controller
                 'logoutRedirect' => [
                     'controller' => 'Users',
                     'action' => 'login'
-                ]
+                ],
+                'unathorizedRedirect' => $this->referer()
             ]);
 
         $this->loadComponent('Flash');
@@ -97,10 +99,21 @@ class AppController extends Controller
         $this->set("current_user",$this->Auth->user());
     }
 
+    /**
+     * Indica si el controlle esta autorizado o no.
+     * Dependiendo de cada controller, se puede sobreescribir imponiendo su propia condición.
+     * Por defecto es esta, la de AppController, y es a la que se suele llamar mediante un 
+     * parent::isAuthorized($user) al final de cada sobreescritura de este método.
+     * 
+     * Va relacionado con la configuración puesta
+     *  'unathorizedRedirect' => $this->referer()
+     */
     public function isAuthorized($user)
     {
-        //temporalmente devuelve true para que no dea problemas: Siempre autorizado.
-        return true;
+        if(isset($user['role']) and $user['role'] === 'admin'){
+            return true;
+        }
+        return false;
     }
 
 }

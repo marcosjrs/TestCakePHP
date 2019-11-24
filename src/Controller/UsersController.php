@@ -9,6 +9,20 @@ use App\Controller\AppController;
  */
 class UsersController extends AppController
 {
+    public function isAuthorized($user)
+    {
+        if(isset($user['role']) and $user['role'] == 'user'){
+            //Si es de tipo user, se mira si la accion pedida está entre las que permitimos
+            //para ese tipo de usuario, que solo son: home y logout.
+            if(in_array($this->request->action, ['home','logout'])){
+                return true;
+            }
+            
+        }
+
+        return parent::isAuthorized($user)
+    }
+
     public function index()
     {
         $users = $this->paginate( $this->Users);
