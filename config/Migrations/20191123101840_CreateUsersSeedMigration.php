@@ -23,9 +23,12 @@ class CreateUsersSeedMigration extends AbstractMigration
             'email' => function() use($faker){
                 return $faker->safeEmail();
             },
-            'password' => function(){
+             /*'password' => function(){
                 $hasher = new DefaultPasswordHasher();
                 return $hasher->hash('secret');
+            }, // Ya lo hace la entidad en el setPassword*/
+            'password' => function(){
+                return 'secret';
             },
             'role'=> 'user',
             'active' => function(){
