@@ -12,7 +12,6 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <?php if(isset($current_user)): ?>
-                <?= $current_user['first_name']?>
             <ul class="nav navbar-nav">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Usuarios <span class="caret"></span></a>
