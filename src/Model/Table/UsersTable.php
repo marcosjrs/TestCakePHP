@@ -58,36 +58,41 @@ class UsersTable extends Table
 
         $validator
             ->scalar('first_name')
-            ->maxLength('first_name', 100)
+            ->maxLength('first_name', 100)            
+            /**Presencia requerida en creacion */
             ->requirePresence('first_name', 'create')
-            ->notEmptyString('first_name');
+            /**Indica que no puede ser un string vacio, 
+             * el segundo parámetro será el texto mostrado solo si tenemos novalidate en el form,
+             * ya que sino, no lo permite el navegador, por ser required */
+            ->notEmptyString('first_name','Rellene este campo');
 
         $validator
             ->scalar('last_name')
             ->maxLength('last_name', 100)
             ->requirePresence('last_name', 'create')
-            ->notEmptyString('last_name');
+            ->notEmptyString('last_name','Rellene este campo');
 
         $validator
+            /**Valida que sea un email válido */
             ->email('email')
             ->requirePresence('email', 'create')
-            ->notEmptyString('email');
+            ->notEmptyString('email','Rellene este campo');
 
         $validator
             ->scalar('password')
             ->maxLength('password', 255)
             ->requirePresence('password', 'create')
-            ->notEmptyString('password');
+            ->notEmptyString('password','Rellene este campo');
 
         $validator
             ->scalar('role')
             ->requirePresence('role', 'create')
-            ->notEmptyString('role');
+            ->notEmptyString('role','Rellene este campo');
 
         $validator
             ->boolean('active')
             ->requirePresence('active', 'create')
-            ->notEmptyString('active');
+            ->notEmptyString('active','Rellene este campo');
 
         return $validator;
     }
