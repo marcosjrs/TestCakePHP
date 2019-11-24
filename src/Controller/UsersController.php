@@ -25,7 +25,7 @@ class UsersController extends AppController
     {
         $this->render();
     }
-
+    
     public function add()
     {
         $user = $this->Users->newEntity();
@@ -60,4 +60,12 @@ class UsersController extends AppController
             }
         }
     }
+
+    
+    public function logout()
+    {
+        //Esto cerrará la session y vuelve a la pantalla de login por que está configurada en AppController
+        return $this->redirect($this->Auth->logout());
+    }
+
 }
