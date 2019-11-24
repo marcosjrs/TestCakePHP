@@ -21,6 +21,11 @@ class UsersController extends AppController
         exit();
     }
 
+    public function home()
+    {
+        $this->render();
+    }
+
     public function add()
     {
         $user = $this->Users->newEntity();
@@ -38,5 +43,21 @@ class UsersController extends AppController
             }
         }
         $this->set(compact('user'));
+    }
+
+    /**
+     * Accion usada tanto para mostrar el login, como para comprobar la autenticacion
+     */
+    public function login()
+    {
+        if($this->request->is('post')){
+            $user = $this->Auth->identify();// datos que el user ha usado para autenticarse
+            if($user){
+                $this->Auth->setUser($user);
+                return $this->redirect($this->Auth->redirectUrl());
+            }else{
+                $this->Flash->error('Datos inválidos, inténtelo de nuevo',['key' => 'auth']);
+            }
+        }
     }
 }

@@ -41,9 +41,43 @@ class AppController extends Controller
     {
         parent::initialize();
 
-        $this->loadComponent('RequestHandler', [
-            'enableBeforeRedirect' => false,
-        ]);
+        
+            /*  Configuraciones que vamos realizar:
+            Autorización a ser manejada por nuestro controlador.
+            Autenticación que vamos a utilizar:  Form (basic), 
+               mapeando que como username usaremos el campo email 
+               (si no hubiera esa diferencia, no haría falta esta configuración) 
+            Accion que responderá al intento de login: Users->login
+            Acción a redirigir cuando haya logado: Users->home
+            Acción a redirigir cuando haya cerrado su sesión: Users->login
+            */
+            $this->loadComponent('RequestHandler');
+            $this->loadComponent('Flash');
+            $this->loadComponent('Auth', [
+                'authorize' => ['Controller'],
+                'authenticate' => [
+                    'Form' => [
+                        'fields' => [
+                            'username' => 'email',
+                            'password' => 'password'
+                        ]
+                    ]
+                ],
+                'loginAction' => [
+                    'controller' => 'Users',
+                    'action' => 'login'
+                ],
+                'authError' => 'Ingrese sus datos',
+                'loginRedirect' => [
+                    'controller' => 'Users',
+                    'action' => 'home'
+                ],
+                'logoutRedirect' => [
+                    'controller' => 'Users',
+                    'action' => 'login'
+                ]
+            ]);
+
         $this->loadComponent('Flash');
 
         /*
@@ -52,4 +86,11 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
     }
+
+    public function isAuthorized($user)
+    {
+        //temporalmente devuelve true para que no dea problemas: Siempre autorizado.
+        return true;
+    }
+
 }
