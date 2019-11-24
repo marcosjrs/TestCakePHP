@@ -87,6 +87,12 @@ class AppController extends Controller
         //$this->loadComponent('Security');
     }
 
+    //Inyectamos el usuario actual, si es que lo tiene, gracias al metodo user de Auth
+    public function beforeFilter(\Cake\Event\Event $event)
+    {
+        $this->set("current_user",$this->Auth->user());
+    }
+
     public function isAuthorized($user)
     {
         //temporalmente devuelve true para que no dea problemas: Siempre autorizado.

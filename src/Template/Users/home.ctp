@@ -1,1 +1,1 @@
-<h3>¡Bienvenid@!</h3>
+<h3>¡Bienvenid@ <?= $current_user['first_name'].' '.$current_user['last_name']; ?> !</h3>
