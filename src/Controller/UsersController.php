@@ -9,6 +9,17 @@ use App\Controller\AppController;
  */
 class UsersController extends AppController
 {
+    /**
+     *  Se ejecuta antes que cualquier otra acción del controlador.
+     */
+    public function beforeFilter(\Cake\Event\Event $event)
+    {
+        parent::beforeFilter($event);
+        //añadimos los accesos que podrá tener aunque no esté logado, 
+        //es decir sin necesidad de otros permisos.
+        $this->Auth->allow(['add']);
+    }
+
     public function isAuthorized($user)
     {
         if(isset($user['role']) and $user['role'] == 'user'){
