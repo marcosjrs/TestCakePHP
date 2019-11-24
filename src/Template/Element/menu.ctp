@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse nav-users">
+<nav class="navbar navbar-inverse nav-users border-radius-0 margin-0">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
