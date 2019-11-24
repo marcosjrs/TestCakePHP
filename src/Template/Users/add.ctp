@@ -16,8 +16,10 @@
                 echo $this->Form->control('last_name',['label'=>__('Apellidos')]);
                 echo $this->Form->control('email');
                 echo $this->Form->control('password',['label'=>__('Contraseña')]);
-                echo $this->Form->control('role',['options'=>['admin'=>'Administrador','user'=>'Usuario'], 'label'=>__('Rol')]);
-                echo $this->Form->control('active',['label'=>__('Activo')]);
+                if($current_user['role']==='admin'): 
+                    echo $this->Form->control('role',['options'=>['admin'=>'Administrador','user'=>'Usuario'], 'label'=>__('Rol')]);
+                    echo $this->Form->control('active',['label'=>__('Activo')]);
+                endif;
             ?>
         </fieldset>
         <?= $this->Form->button(__('Crear')) ?>

@@ -62,6 +62,11 @@ class UsersController extends AppController
         if($this->request->is('post')){
             //debug($this->request->data);
             $user = $this->Users->patchEntity($user, $this->request->data);
+            $userLogado = $this->Auth->user();
+            if(!isset($userLogado['role']) || $userLogado['role'] != 'admin'){
+                $user->role = 'user';
+                $user->active = true;
+            }
             if($this->Users->save($user)){
                 $this->Flash->success('El usuario ha sido creado correctamente');
                 return $this->redirect(['controller'=>'Users', 'action'=>'index']);
