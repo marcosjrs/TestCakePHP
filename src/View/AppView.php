@@ -38,8 +38,8 @@ class AppView extends View
      */
     public function initialize()
     {
-        //render the initializeUI method from the UIViewTrait 
+        //Disable auto loading of the layout. Ya que tenemos un layout personalizado. 
         // (https://github.com/FriendsOfCake/bootstrap-ui)
-        $this->initializeUI();
+        $this->initializeUI(['layout' => false]);
     }
 }
