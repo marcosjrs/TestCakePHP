@@ -26,9 +26,9 @@
                 <td><?= h($user->last_name) ?></td>
                 <td><?= h($user->email) ?></td>
                 <td>
-                    <?= $this->Html->link(__('Ver'), ['action' => 'view', $user->id]) ?>
-                    <?= $this->Html->link(__('Editar'), ['action' => 'edit', $user->id]) ?>
-                    <?= $this->Form->postLink(__('Borrar'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                    <?= $this->Html->link(__('Ver'), ['action' => 'view', $user->id],["class"=>"btn btn-sm btn-info"]) ?>
+                    <?= $this->Html->link(__('Editar'), ['action' => 'edit', $user->id],["class"=>"btn btn-sm btn-primary"]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), "class"=>"btn btn-sm btn-danger"]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
