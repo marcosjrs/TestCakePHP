@@ -26,10 +26,11 @@
                     </ul>
                 </li>
             </ul>
+            <?php else: ?>
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <?= $this->Html->link('Salir',['controller' =>'Users', 'action'=>'logout' ])?>
-                </li>
+              <li>
+                   <?= $this->Html->link('Registrarse', ['controller' => 'Users', 'action' => 'add']) ?>
+              </li>
             </ul>
             <?php endif; ?>
         </div>
