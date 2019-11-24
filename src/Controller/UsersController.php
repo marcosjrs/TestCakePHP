@@ -78,6 +78,24 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
+    public function delete($id = null)
+    {
+        //métodos que van a ser permitidos dentro de esta acción
+        $this->request->allowMethod(['post', 'delete']);
+        //recuperamos el usuario según el identificador
+        $user = $this->Users->get($id);
+        if ($this->Users->delete($user))
+        {
+            $this->Flash->success('El usuario ha sido eliminado');
+        }
+        else
+        {
+            $this->Flash->error('El usuario no pudo ser eliminado.');
+        }
+        return $this->redirect(['action' => 'index']);
+    }
+    
+
     /**
      * Accion usada tanto para mostrar el login, como para comprobar la autenticacion
      */
