@@ -12,12 +12,12 @@
         <?= $this->Form->create($user) ?>
         <fieldset>
             <?php
-                echo $this->Form->control('first_name');
-                echo $this->Form->control('last_name');
+                echo $this->Form->control('first_name',['label'=>__('Nombre')]);
+                echo $this->Form->control('last_name',['label'=>__('Apellidos')]);
                 echo $this->Form->control('email');
-                echo $this->Form->control('password');
-                echo $this->Form->control('role',['options'=>['admin'=>'Administrador','user'=>'Usuario']]);
-                echo $this->Form->control('active');
+                echo $this->Form->control('password',['label'=>__('Contraseña')]);
+                echo $this->Form->control('role',['options'=>['admin'=>'Administrador','user'=>'Usuario'], 'label'=>__('Rol')]);
+                echo $this->Form->control('active',['label'=>__('Activo')]);
             ?>
         </fieldset>
         <?= $this->Form->button(__('Crear')) ?>
