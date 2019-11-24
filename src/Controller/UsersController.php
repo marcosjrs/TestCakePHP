@@ -20,7 +20,7 @@ class UsersController extends AppController
             
         }
 
-        return parent::isAuthorized($user)
+        return parent::isAuthorized($user);
     }
 
     public function index()
@@ -29,10 +29,13 @@ class UsersController extends AppController
         $this->set("users",$users);
     }
 
-    public function view($parametro=null)
+    /**
+     * Ver perfil de usuario
+     */
+    public function view($id)
     {
-        echo "Detalle de usuario ".$parametro;
-        exit();
+       $user = $this->Users->get($id);
+       $this->set('user',$user);
     }
 
     public function home()
